@@ -1,0 +1,13 @@
+---
+# tasks file for centos-common
+
+- name:  Install some base packages
+  yum:  name={{ item }} state=installed
+  with_items:
+  - libselinux-python
+- name:  Disable selinux
+  selinux:  state=disabled
+
+- name:  Disable iptables
+  service:  name=iptables state=stopped enabled=no
+
